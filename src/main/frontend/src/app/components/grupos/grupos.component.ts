@@ -4,6 +4,7 @@ import { Grupo } from '../../model/grupo'
 import { GrupoService } from '../../services/grupo.service';
 import { GastoNuevoComponent } from '../gasto-nuevo/gasto-nuevo.component';
 import { GrupoNuevoComponent } from '../grupo-nuevo/grupo-nuevo.component';
+import { MiembroNuevoComponent } from "../miembro-nuevo/miembro-nuevo.component";
 
 @Component({
   selector: 'app-grupos',
@@ -18,6 +19,8 @@ export class GruposComponent implements OnInit, AfterViewInit {
   @ViewChild(GrupoNuevoComponent) grupoNuevo!: GrupoNuevoComponent;
 
   @ViewChild(GastoNuevoComponent) gastoNuevo!: GastoNuevoComponent;
+
+  @ViewChild(MiembroNuevoComponent) miembroNuevo!: MiembroNuevoComponent;
 
   constructor(private grupoService: GrupoService, private messageService: MessageService) {
 
@@ -59,5 +62,9 @@ export class GruposComponent implements OnInit, AfterViewInit {
       summary: 'Error',
       detail: error.mensaje,
     });
+  }
+
+  editarMiembros(grupo: Grupo): void {
+    this.miembroNuevo.iniciarPara(grupo);
   }
 }

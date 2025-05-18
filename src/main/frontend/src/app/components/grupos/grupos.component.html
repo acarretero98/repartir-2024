@@ -5,7 +5,7 @@
         <th class="text-center text-primary">id</th>
         <th class="text-center">nombre</th>
         <th class="text-center">total</th>
-        <th class="text-center">miembros</th>
+        <th class="text-center">miembrossss</th>
         <th class="text-center">gastos</th>
       </tr>
     </ng-template>
@@ -16,6 +16,7 @@
         <td class="text-right">{{grupo.total | currency}}</td>
         <td>
           <p-chip *ngFor="let miembro of grupo.miembros" [label]="miembro" icon="pi pi-user" styleClass="m-1"></p-chip>
+          <p-button [id]="'editarMiembrosGruposButton-' + grupo.id" icon="pi pi-plus" (onClick)="editarMiembros(grupo)" styleClass="p-button-secondary p-button-rounded"></p-button>
         </td>
         <td>
           <p-button [id]="'agregarGastoGruposButton-' + grupo.id" icon="pi pi-plus" (onClick)="agregarGasto(grupo)" styleClass="p-button-secondary p-button-rounded"></p-button>
@@ -34,3 +35,6 @@
 
 <app-gasto-nuevo>
 </app-gasto-nuevo>
+
+<app-miembro-nuevo>
+</app-miembro-nuevo>

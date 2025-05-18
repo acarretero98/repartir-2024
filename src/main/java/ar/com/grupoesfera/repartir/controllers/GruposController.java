@@ -8,12 +8,7 @@ import ar.com.grupoesfera.repartir.exceptions.GrupoNoEncontradoException;
 import ar.com.grupoesfera.repartir.services.GruposService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -74,6 +69,27 @@ public class GruposController {
         } catch (GrupoNoEncontradoException e) {
 
             response = ResponseEntity.notFound().build();
+
+        } catch (Exception e) {
+
+            response = ResponseEntity.internalServerError().build();
+        }
+
+        return response;
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Grupo> actualizar(@PathVariable Long id, @RequestBody Grupo grupo) {
+        grupo.setId(id);
+        ResponseEntity<Grupo> response;
+
+        try {
+
+            response = ResponseEntity.ok(grupos.actualizar(grupo));
+
+        } catch (GrupoInvalidoException e) {
+
+            response = ResponseEntity.badRequest().build();
 
         } catch (Exception e) {
 

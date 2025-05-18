@@ -32,6 +32,11 @@ export class GrupoService {
       .pipe(catchError(this.falloAlGuardar));
   }
 
+  actualizar(grupo: Grupo): Observable<Grupo> {
+    return this.http.put<Grupo>('/api/grupos/${grupo.id}', grupo)
+      .pipe(catchError(this.falloAlGuardar));
+  }
+
   agregarGasto(grupo: Grupo, monto: number): Observable<Grupo> {
 
     const nuevoGasto: Gasto = {

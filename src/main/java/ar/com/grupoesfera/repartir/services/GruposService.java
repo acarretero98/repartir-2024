@@ -34,6 +34,10 @@ public class GruposService {
         return nuevoGrupo;
     }
 
+    public Grupo actualizar(Grupo viejoGrupo) {
+        return crear(viejoGrupo);
+    }
+
     private void guardar(Grupo nuevoGrupo) {
         montos.inicializarTotal(nuevoGrupo);
         repository.save(nuevoGrupo);
@@ -68,5 +72,4 @@ public class GruposService {
         repository.save(grupo);
         return grupo;
     }
-
 }

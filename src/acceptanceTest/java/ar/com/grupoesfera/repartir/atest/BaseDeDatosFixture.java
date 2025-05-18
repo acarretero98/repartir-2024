@@ -62,4 +62,23 @@ public class BaseDeDatosFixture {
         populator.addScript(new ByteArrayResource(insert.getBytes()));
         populator.execute(dataSource);
     }
+
+    public void tieneElGrupo(int id, String nombre) {
+
+        estaVacia();
+        var insert =
+                """
+                    INSERT INTO grupo (id, nombre)
+                    VALUES (<ID>, '<NOMBRE>');
+                            
+                    INSERT INTO grupo_miembros (grupo_id, miembro)
+                    VALUES (<ID>, 'bob'), (<ID>, 'patricio')
+                """
+                        .replaceAll("<ID>", String.valueOf(id))
+                        .replaceAll("<NOMBRE>", nombre);
+
+        var populator = new ResourceDatabasePopulator();
+        populator.addScript(new ByteArrayResource(insert.getBytes()));
+        populator.execute(dataSource);
+    }
 }

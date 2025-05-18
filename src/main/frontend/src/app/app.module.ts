@@ -23,6 +23,7 @@ import { AppComponent } from './app.component';
 import { GruposComponent } from './components/grupos/grupos.component';
 import { GrupoNuevoComponent } from './components/grupo-nuevo/grupo-nuevo.component';
 import { GastoNuevoComponent } from './components/gasto-nuevo/gasto-nuevo.component';
+import { MiembroNuevoComponent } from './components/miembro-nuevo/miembro-nuevo.component';
 import { IdentificarGrupoPipe } from './pipes/identificar-grupo.pipe';
 import { BienvenidaComponent } from './components/bienvenida/bienvenida.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
@@ -36,6 +37,7 @@ registerLocaleData(localeEs, 'es-AR');
     GruposComponent,
     GrupoNuevoComponent,
     GastoNuevoComponent,
+    MiembroNuevoComponent,
     IdentificarGrupoPipe,
     BienvenidaComponent,
     UsuarioComponent,
