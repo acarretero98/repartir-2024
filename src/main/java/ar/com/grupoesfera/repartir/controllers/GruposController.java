@@ -80,7 +80,10 @@ public class GruposController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Grupo> actualizar(@PathVariable Long id, @RequestBody Grupo grupo) {
+        System.out.println("recibiendo id: " + id);
+        System.out.println("recibiendo grupo: " + grupo);
         grupo.setId(id);
+        System.out.println("actualizando: " + grupo);
         ResponseEntity<Grupo> response;
 
         try {

@@ -16,8 +16,10 @@ export class MiembroNuevoComponent implements OnInit {
   mostrar: boolean = false;
 
   grupo: Grupo ;
-
+  id: number | undefined = 0;
   monto: number = 0.0;
+  nombre: string = '';
+  miembros: string[] = [];
 
   @Output() readonly guardadoEvent = new EventEmitter<void>();
 
@@ -36,7 +38,9 @@ export class MiembroNuevoComponent implements OnInit {
 
     this.mostrar = true;
     this.grupo = grupo;
-    this.monto = 0.0;
+    this.id = grupo.id
+    this.nombre = grupo.nombre
+    this.miembros = [...grupo.miembros]
   }
 
   cancelar(): void {
@@ -46,7 +50,7 @@ export class MiembroNuevoComponent implements OnInit {
 
   guardar(): void {
 
-    this.grupoService.agregarGasto(this.grupo, this.monto).subscribe(
+    this.grupoService.actualizar(this.grupo, this.miembros).subscribe(
       grupo => this.guardadoExitoso(grupo),
       error => this.guardadoFallido(error)
     );
@@ -57,7 +61,7 @@ export class MiembroNuevoComponent implements OnInit {
     this.messageService.add({
       severity: 'success',
       summary: 'Éxito',
-      detail: `Gasto agregado al grupo '${this.identificarGrupo.transform(grupo)}'`,
+      detail: `Miembros editados del grupo '${this.identificarGrupo.transform(grupo)}'`,
     });
     this.guardadoEvent.emit();
     this.mostrar = false;

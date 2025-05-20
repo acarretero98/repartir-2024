@@ -32,8 +32,11 @@ export class GrupoService {
       .pipe(catchError(this.falloAlGuardar));
   }
 
-  actualizar(grupo: Grupo): Observable<Grupo> {
-    return this.http.put<Grupo>('/api/grupos/${grupo.id}', grupo)
+  actualizar(grupo: Grupo, miembros: string[]): Observable<Grupo> {
+    console.log('1-Llamando a actualizar con grupo:', grupo);
+    grupo.miembros = miembros
+    console.log('2-Llamando a actualizar con grupo:', grupo);
+    return this.http.put<Grupo>(`/api/grupos/${grupo.id}`, grupo)
       .pipe(catchError(this.falloAlGuardar));
   }
 
