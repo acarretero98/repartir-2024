@@ -74,39 +74,4 @@ public class EditarMiembrosJourneySteps extends CucumberSteps {
         int ocurrencias = miembrosTexto.split("raul", -1).length - 1;
         assertThat(ocurrencias).isEqualTo(1);
     }
-
-    /*@Step("completa con el monto de $ {string}")
-    public void completaConElMontoDe(String monto) {
-
-        var montoInput = driver.findElement(By.id("montoGastoNuevoInput"));
-        montoInput.clear();
-        montoInput.sendKeys(monto);
-    }
-
-    @Step("guarda el gasto")
-    public void guardaElGasto() {
-
-        var agregarGastoButton = driver.findElement(By.id("guardarGastoNuevoButton"));
-        agregarGastoButton.click();
-    }
-
-    @Step("ve la confirmación {string}")
-    public void veLaConfirmación(String mensaje) {
-
-        var wait = new WebDriverWait(driver, 2);
-        var mensajesToast = wait.until(visibilityOfElementLocated(By.id("mensajesToast")));
-        assertThat(mensajesToast.getText())
-                .contains("Éxito")
-                .contains(mensaje);
-    }
-
-    @Step("ve el total del grupo #{int} actualizado a {string}")
-    public void veElTotalDelGrupoActualidadoA$(int idGrupo, String monto) {
-
-        var grupoTR = driver.findElements(By.cssSelector("app-grupos table tr"));
-
-        var campoTDs = grupoTR.get(1).findElements(By.tagName("td"));
-        assertThat(campoTDs.get(0).getText()).isNotEmpty();
-        assertThat(campoTDs.get(2).getText()).isEqualTo(monto);
-    }*/
 }
