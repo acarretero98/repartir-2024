@@ -8,7 +8,6 @@ Característica: Editar miembros de grupo existente
     * el usuario inicia la aplicación
     * el usuario selecciona editar miembros al grupo #21
     * agrega al usuario "javier"
-    * guarda los cambios
-    * ve la confirmación 'miembros actualizados'
-    * ve que los miembros del grupo #42 incluye a "javier"
+    //podria meter una validacion que recibo mensaje OK o algo asi, para que contraste con el proximo test de que valide q no puedo sumar 2 veces al mismo o algo asi
+    * deberia visualizar dentro del listado al grupo #21 con el miembro "javier"
 

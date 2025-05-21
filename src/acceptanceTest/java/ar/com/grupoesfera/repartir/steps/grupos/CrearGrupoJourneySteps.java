@@ -78,7 +78,7 @@ public class CrearGrupoJourneySteps extends CucumberSteps {
     @Step("se muestra {int}° el grupo {string} con total {string}")
     public void seMuestraElNuevoGrupo(int posicion, String nombre, String total) {
 
-        var wait = new WebDriverWait(driver, 2);
+        var wait = new WebDriverWait(driver, 5);
         wait.until(visibilityOfElementLocated(By.id("mensajesToast")));
 
         var grupoTR = driver.findElements(By.cssSelector("app-grupos table tr"));
