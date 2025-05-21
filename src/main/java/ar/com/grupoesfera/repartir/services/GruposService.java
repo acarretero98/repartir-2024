@@ -44,6 +44,10 @@ public class GruposService {
     }
 
     private void validar(Grupo nuevoGrupo) {
+        if (nuevoGrupo.TieneMiembrosRepetidos()) {
+            throw new GrupoInvalidoException();
+        }
+
         if (!nuevoGrupo.estaFormado()) {
             throw new GrupoInvalidoException();
         }

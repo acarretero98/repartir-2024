@@ -71,4 +71,8 @@ public class Grupo {
 
         return (miembros != null) && (miembros.size() > 1);
     }
+
+    public boolean TieneMiembrosRepetidos() {
+        return miembros.size() != new java.util.HashSet<>(miembros).size();
+    }
 }
