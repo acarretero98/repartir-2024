@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import {catchError, tap} from 'rxjs/operators';
 import { Grupo } from '../model/grupo';
 import { Excepcion } from '../model/excepcion';
 import { Gasto } from '../model/gasto';
@@ -32,9 +32,16 @@ export class GrupoService {
       .pipe(catchError(this.falloAlGuardar));
   }
 
-  actualizar(grupo: Grupo): Observable<Grupo> {
-    return this.http.put<Grupo>('/api/grupos/${grupo.id}', grupo)
-      .pipe(catchError(this.falloAlGuardar));
+  actualizar(grupo: Grupo, miembros: string[]): Observable<Grupo> {
+    const grupoActualizado: Grupo = {
+      ...grupo,
+      miembros: [...miembros]
+    }
+    return this.http.put<Grupo>(`/api/grupos/${grupo.id}`, grupoActualizado)
+      .pipe(
+        tap(() => grupo.miembros = miembros),
+        catchError(this.falloAlGuardar)
+      );
   }
 
   agregarGasto(grupo: Grupo, monto: number): Observable<Grupo> {
